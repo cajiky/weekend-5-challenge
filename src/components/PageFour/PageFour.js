@@ -1,11 +1,43 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+const emptyForm = {
+    response: ''
+}
 class PageFour extends Component{
+
+    state = emptyForm
+
+onSubmit = (event) => {
+    event.preventDefault();
+    console.log(this.state);    
+}
+
+clearInputs = () =>{
+    this.setState(emptyForm);
+}
+
+handleFormChange = (event) => {
+    this.setState({
+        ...this.state,
+        response: event.target.value
+    })
+    console.log(this.state);
+}
+
     render(){
         return(
-            <h1>Page PageFour</h1>
-        )
+            <div>
+            <h2>Page 4/4</h2>
+            
+            
+            <h1>Any comments you wish to leave?</h1>
+            <form onSubmit={this.onSubmit}>
+                <label>1-5:</label>
+                <input onChange={this.handleFormChange} value={this.state.response} />
+            </form>
+            </div>
+        );
     }
 }
 
