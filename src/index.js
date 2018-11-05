@@ -10,7 +10,16 @@ import logger from 'redux-logger';
 //Create Reducer
 const feedbackReducer = (state = [], action) => {
     console.log('In reducer');
-    if(action.type === 'SET_FEEDBACK'){
+    if(action.type === 'SET_FEELING'){
+        
+    }
+    else if(action.type === 'SET_UNDERSTANDING'){
+
+    }
+    else if(action.type === 'SET_SUPPORT'){
+
+    }
+    else if(aciton.type === 'SET_COMMENTS'){
 
     }
 return state;
