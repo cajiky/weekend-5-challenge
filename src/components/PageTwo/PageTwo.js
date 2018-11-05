@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 const emptyForm = {
-    response: ''
+    understanding: ''
 }
 class PageTwo extends Component{
 
@@ -10,7 +10,10 @@ class PageTwo extends Component{
 
 onSubmit = (event) => {
     event.preventDefault();
-    console.log(this.state);    
+    console.log(this.state); 
+    this.props.dispatch({type: 'SET_UNDERSTANDING', payload: this.state })   
+    this.clearInputs(); 
+    this.props.history.push('/PageThree') 
 }
 
 clearInputs = () =>{
@@ -20,7 +23,7 @@ clearInputs = () =>{
 handleFormChange = (event) => {
     this.setState({
         ...this.state,
-        response: event.target.value
+        understanding: event.target.value
     })
     console.log(this.state);
 }
@@ -34,8 +37,9 @@ handleFormChange = (event) => {
             <h1>How well are you understanding the content?</h1>
             <form onSubmit={this.onSubmit}>
                 <label>1-5:</label>
-                <input onChange={this.handleFormChange} value={this.state.response} />
+                <input onChange={this.handleFormChange} value={this.state.understanding} />
             </form>
+            <button onClick={this.onSubmit}>Next</button>
             </div>
         );
     }

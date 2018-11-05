@@ -2,16 +2,19 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 const emptyForm = {
-    response: ''
+    support: ''
 }
 class PageThree extends Component{
 
     state = emptyForm
 
-onSubmit = (event) => {
-    event.preventDefault();
-    console.log(this.state);    
-}
+    onSubmit = (event) => {
+        event.preventDefault();
+        console.log(this.state); 
+        this.props.dispatch({type: 'SET_SUPPORT', payload: this.state })   
+        this.clearInputs();  
+        this.props.history.push('/PageFour')
+    }
 
 clearInputs = () =>{
     this.setState(emptyForm);
@@ -20,7 +23,7 @@ clearInputs = () =>{
 handleFormChange = (event) => {
     this.setState({
         ...this.state,
-        response: event.target.value
+        support: event.target.value
     })
     console.log(this.state);
 }
@@ -34,8 +37,9 @@ handleFormChange = (event) => {
             <h1>How well are you being supported?</h1>
             <form onSubmit={this.onSubmit}>
                 <label>1-5:</label>
-                <input onChange={this.handleFormChange} value={this.state.response} />
+                <input onChange={this.handleFormChange} value={this.state.support} />
             </form>
+            <button onClick={this.onSubmit}>Next</button>
             </div>
         );
     }

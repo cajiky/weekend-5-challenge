@@ -29,7 +29,7 @@ class App extends Component {
         <Route path="/PageThree" component={PageThree} />
         <Route path="/PageFour" component={PageFour} />
         <Route path="/PageFive" component={PageFive} />
-        <Route path="/PageAdmin" component={PageAdmin} />
+        <Route path="/Admin" component={PageAdmin} />
       </div>
       </Router>
     );
